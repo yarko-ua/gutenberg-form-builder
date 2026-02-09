@@ -1,0 +1,43 @@
+{
+	"name": "gutenberg-form-builder",
+	"version": "1.0.0",
+	"description": "Advanced form builder for Gutenberg with custom fields and validation",
+	"author": "Your Name",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"start": "wp-scripts start",
+		"build": "wp-scripts build",
+		"build:custom": "wp-scripts build webpack --config webpack.config.js",
+		"start:custom": "wp-scripts start extend-align.js --output-path=build",
+		"build-all": "npm run build && npm run build:custom",
+		"start-all": "npm run start & npm run start:custom",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip"
+	},
+	"files": [
+		"build",
+		"src",
+		"vendor",
+		"inc",
+		"index.php",
+		"package.json",
+		"webpack.config.js",
+		"build-plugin.sh",
+		"composer.json",
+		"readme.txt"
+	],
+	"devDependencies": {
+		"@wordpress/scripts": "^30.5.1",
+		"sass-loader": "^13.3.2"
+	},
+	"dependencies": {
+		"@wordpress/components": "^28.12.0",
+		"array-move": "^4.0.0",
+		"clsx": "^2.1.1",
+		"react-datepicker": "^8.7.0",
+		"react-sortable-hoc": "^2.0.0"
+	}
+}

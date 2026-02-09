@@ -1,0 +1,40 @@
+@mixin desktop() {
+	@media screen and (min-width: 1024px) {
+		@content;
+	}
+}
+
+@mixin smallDesktop() {
+	@media screen and (min-width: 1024px) and (max-width: 1367px) {
+		@content;
+	}
+}
+
+@mixin onlyTablet() {
+	@media screen and (min-width: 768px) and (max-width: 1024px) {
+		@content;
+	}
+}
+
+@mixin tablet() {
+	@media screen and (max-width: 1024px) {
+		@content;
+	}
+}
+@mixin smallTablet() {
+	@media screen and (max-width: 820px) {
+		@content;
+	}
+}
+
+@mixin smallTabletOnly() {
+	@media screen and (min-width: 768px) and (max-width: 820px) {
+		@content;
+	}
+}
+
+@mixin mobile() {
+	@media screen and (max-width: 767px) {
+		@content;
+	}
+}

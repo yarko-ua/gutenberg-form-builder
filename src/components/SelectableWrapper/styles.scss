@@ -1,0 +1,11 @@
+.selectable-wrapper {
+	position: relative;
+
+	> .components-base-control {
+		position: absolute;
+		top: 0;
+		right: 0;
+		background: rgb(212 212 212 / 47%);
+		backdrop-filter: blur(4px);
+	}
+}

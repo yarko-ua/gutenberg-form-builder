@@ -1,0 +1,228 @@
+@mixin form-field-dropdown {
+	&.type-dropdown {
+		.choices {
+			width: 100%;
+
+			color: var(--_input-color);
+
+			font-weight: 400;
+			margin-bottom: 0;
+
+			&__input {
+			}
+
+			&__inner {
+				border-radius: var(--_input-radius, 0px);
+				border: 1px solid var(--_input-border-color, transparent);
+				font-size: 1rem;
+				background: var(--_input-bg, transparent);
+
+				// border: none;
+				// border-radius: 0;
+				// border-bottom: 1px solid var(--c-grey-2);
+				padding: 13px 15px !important;
+			}
+
+			&__list {
+				padding: 0;
+				z-index: 2;
+				top: calc(100% + 1px);
+
+				&--dropdown {
+					border: none;
+					border-color: var(--_input-bg, transparent) !important;
+					// border-radius: 0;
+					background: var(--_input-bg, transparent);
+					// box-shadow: -1px 1px 4px 0px rgba(48, 67, 99, 0.2);
+					border-radius: 0 0 var(--_input-radius, 0px) var(--_input-radius, 0px);
+					padding-bottom: 13px;
+
+					.choices__item--selectable {
+						color: var(--_input-color);
+						font-size: 1rem;
+						line-height: 1.5;
+						font-weight: 400;
+						// font-family: "Poppins", sans-serif;
+						padding: 4px 15px;
+
+						&[data-value=""] {
+							display: none;
+						}
+
+						&.is-highlighted {
+							background: var(--_input-bg);
+							// color: var(--c-white);
+							text-decoration: underline;
+							text-underline-offset: 4px;
+						}
+					}
+				}
+			}
+
+			&__placeholder {
+				opacity: 1;
+			}
+
+			&::after {
+				// background: url("/wp-content/themes/lecomte/dist/images/svg/chevron.svg");
+				// mask-image: url("#{$themeDir}/dist/images/svg/chevron.svg");
+				mask-image: url("./field/FieldDropdown/chevron.svg");
+				// content: url("/wp-content/themes/lecomte/dist/images/svg/chevron-down.svg");
+				// -webkit-mask-image: url('icon.svg');
+				background-color: var(--_input-color);
+				width: 24px;
+				height: 24px;
+				mask-size: 24px;
+				background-size: contain;
+				border: none;
+				// margin-top: -10px;
+				position: absolute;
+				top: 13px;
+				rotate: 0deg;
+				margin-top: 0 !important;
+				transition: rotate 0.33s ease-in-out;
+			}
+
+			&.is-flipped {
+				.choices__inner {
+				}
+
+				.choices__list {
+					&--dropdown {
+						top: auto;
+
+						border-radius: var(--_input-radius, 0px) var(--_input-radius, 0px) 0
+							0;
+						padding-block: 13px 0;
+					}
+				}
+			}
+
+			&.is-open {
+				&::after {
+					// margin-top: -10px;
+					rotate: 180deg;
+					// background-color: var(--c-secondary);
+				}
+
+				.choices__inner {
+					// outline: 1px solid var(--c-secondary);
+					border-color: var(--_input-bg, transparent);
+					border-radius: var(--_input-radius, 0px) var(--_input-radius, 0px) 0 0;
+				}
+
+				&.is-flipped {
+					.choices__inner {
+						border-radius: 0 0 var(--_input-radius, 0px)
+							var(--_input-radius, 0px);
+					}
+				}
+			}
+
+			&[data-type="select-multiple"] {
+				.choices {
+					&__inner {
+						display: flex;
+						// padding: 0 !important;
+						// background: transparent;
+					}
+
+					&__list {
+						&[role="listbox"]:not(.choices__list--multiple) {
+							// display: flex;
+							// flex-direction: column;
+							// background: #ffffff8c;
+							// border-radius: 10px;
+							// margin: 10px;
+							// gap: 6px;
+
+							.choices__item {
+								// background: var(--c-white, #fff);
+								// border-radius: var(--_input-radius);
+
+								&.is-selected {
+									// background: red;
+									// color: var(--c-white, #fff);
+								}
+							}
+						}
+
+						&--multiple {
+							.choices__item {
+								background: rgb(6, 63, 113, var(--tw-bg-opacity, 1));
+							}
+						}
+					}
+
+					&__inner {
+						&::after {
+							content: "";
+							position: absolute;
+							right: 11.5px;
+							top: 50%;
+							margin-top: -2.5px;
+							pointer-events: none;
+							// mask-image: url("#{$themeDir}/dist/images/svg/chevron.svg");
+							mask-image: url("./field/FieldDropdown/chevron.svg");
+							// content: url("/wp-content/themes/lecomte/dist/images/svg/chevron-down.svg");
+							// -webkit-mask-image: url('icon.svg');
+							background-color: var(--_input-color);
+							width: 24px;
+							height: 24px;
+							mask-size: 24px;
+							background-size: contain;
+							border: none;
+							// margin-top: -10px;
+							position: absolute;
+							top: initial;
+							bottom: 13px;
+							rotate: 0deg;
+							margin-top: 0 !important;
+							transition: rotate 0.33s ease-in-out;
+						}
+					}
+
+					&__input {
+						order: -1; //move to start of flex container
+						// width: 100% !important;
+						padding: 0;
+						margin: 0;
+						border: none;
+						// border-radius: var(--_input-radius, 0px);
+						// border: 1px solid var(--_input-border-color, transparent);
+						// font-size: 1rem;
+						// background: var(--_input-bg, transparent);
+
+						// // border: none;
+						// // border-radius: 0;
+						// // border-bottom: 1px solid var(--c-grey-2);
+						// padding: 13px 15px !important;
+					}
+
+					&__item {
+						&.is-selected {
+							// border-radius: var(--_input-radius, 0px);
+							// background: rgba(81, 81, 81, 0.572);
+							// color: var(--c-white, #fff);
+						}
+					}
+				}
+
+				&.is-focused {
+					.choices__inner::after {
+						rotate: 180deg;
+					}
+				}
+			}
+		}
+
+		&.has-error {
+			.choices {
+				&__inner {
+					border-color: var(--c-error, #dc3545);
+					border-width: 2px;
+				}
+			}
+		}
+	}
+}

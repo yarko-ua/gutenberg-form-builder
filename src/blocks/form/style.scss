@@ -1,0 +1,227 @@
+// @import "~react-datepicker/dist/react-datepicker.css";
+@import "@mixins/viewport";
+
+.wp-block-mediweb-form {
+	--_input-radius: 30px;
+	--_input-radius-2: 20px;
+	--_row-gap: 24px;
+	--_field-spacing: 20px;
+	--_conditional-field-spacing: 12px;
+	--_f-color: #141414;
+	// box-shadow: 4px 4px 31px rgb(173 164 164 / 74%);
+	// padding: 24px;
+	// border-radius: 12px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: var(--_row-gap, 24px);
+
+	color: var(--_f-color);
+
+	&.is-style-dark {
+		--_input-bg: #333b4c;
+		--_input-border-color: rgba(211, 205, 193, 0.5);
+		--_input-border-color-focus: var(--c-ivory);
+		--_input-color: var(--c-white);
+		--_placeholder-color: var(--c-ivory);
+		--_input-bg-active: #333b4c !important;
+		--_input-color-active: var(--c-white) !important;
+
+		// background: #063F71;
+		color: var(--c-white);
+
+		.m-button {
+			--_bg: var(--c-ivory);
+			--_bg_hover: var(--c-white);
+			--_color: var(--c-gray);
+			--_color_hover: var(--c-gray);
+
+			// &:hover {
+			// 	background: var(--_bg_hover);
+			// }
+		}
+	}
+
+	&.is-style-light {
+		--_input-bg: var(--c-ivory-light) !important;
+		--_input-border-color: var(--c-ivory) !important;
+		--_input-border-color-focus: rgba(211, 205, 193, 0.5) !important;
+		--_input-color: var(--c-gray) !important;
+		--_placeholder-color: #d3cdc1 !important;
+		--_input-bg-active: var(--c-ivory-light) !important;
+		--_input-color-active: var(--c-gray) !important;
+
+		color: var(--c-gray);
+
+		// --_input-bg: transparent;
+		// --_input-bg-active: transparent;
+		// --_input-border-color: #b8c7e0;
+		// --_input-border-color-focus: #22a7ca;
+		// --_input-color: #17738a;
+		// --_input-color-active: #17738a;
+		// --_placeholder-color: #17738a;
+	}
+
+	> .block-editor-inner-blocks {
+		width: 100%;
+
+		> .block-editor-block-list__layout {
+			padding-bottom: 24px;
+
+			> .wp-block-mediweb-form-row {
+				margin-block: 50px;
+				width: 100%;
+				max-width: 100%;
+
+				&:first-child {
+					margin-top: 0;
+				}
+			}
+
+			> .block-list-appender {
+				// position: relative;
+				width: 100%;
+
+				button {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	// Visual separate rows
+	> .wp-block-mediweb-form-row:not(:has(+ [name="formSettings"])) {
+		position: relative;
+		padding-bottom: var(--_row-gap);
+
+		&::after {
+			content: "";
+			width: 100%;
+			height: 2px;
+			background: var(--_input-color);
+			position: absolute;
+			top: 100%;
+			left: 0;
+		}
+	}
+
+	[type="submit"] {
+		margin-top: 16px;
+		display: block;
+		position: relative;
+		cursor: pointer;
+	}
+
+	&.is-aligned-left {
+		[type="submit"] {
+			margin-left: 0;
+			margin-right: auto;
+		}
+	}
+	&.is-aligned-center {
+		[type="submit"] {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	&.is-aligned-right {
+		[type="submit"] {
+			margin-left: auto;
+			margin-right: 0;
+		}
+	}
+
+	&.loading {
+		[type="submit"] {
+			pointer-events: none;
+
+			&::before {
+				content: "";
+				width: 100%;
+				height: 100%;
+				background: rgba(255, 255, 255, 0.6);
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+
+			&::after {
+				content: "";
+				display: inline-block;
+				width: 50px;
+				aspect-ratio: 1;
+				border-radius: 50%;
+				border: 8px solid;
+				border-color: #000 rgba(0, 0, 0, 0);
+				animation: l1 1s infinite;
+				position: absolute;
+				z-index: 2;
+				height: 80%;
+				width: auto;
+				top: 50%;
+				left: 50%;
+				translate: -50% -50%;
+			}
+		}
+	}
+
+	@include mobile {
+		gap: 12px;
+
+		[type="submit"] {
+			margin-top: 6px;
+		}
+	}
+}
+
+@keyframes l1 {
+	to {
+		transform: rotate(0.5turn);
+	}
+}
+
+// Temp modal styles for form submit response
+.modal {
+	width: 100vw;
+	height: 100vh;
+	background: #878787bd;
+	position: fixed;
+	z-index: 1001;
+	top: 0;
+	left: 0;
+	backdrop-filter: blur(4px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&-content {
+		background: var(--c-white, #fff);
+		padding: 24px;
+		border-radius: 24px;
+		// min-height: 300px;
+		padding: 24px;
+		width: min(calc(100% - 24px), 730px);
+		position: relative;
+	}
+
+	.title {
+		font: 400 1.625rem / 1.384 sans-serif;
+		text-align: center;
+		padding-block: 24px;
+	}
+
+	.close-button {
+		font-size: 50px;
+		line-height: 1;
+		// padding: 0px 10px;
+		margin-left: auto;
+		display: flex;
+		width: fit-content;
+		cursor: pointer;
+		// margin-bottom: 24px;
+		position: absolute;
+		top: 12px;
+		right: 12px;
+	}
+}

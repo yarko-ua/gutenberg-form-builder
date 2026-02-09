@@ -1,0 +1,136 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mediweb/form",
+	"version": "0.1.0",
+	"title": "Form",
+	"category": "mediweb",
+	"icon": "smiley",
+	"description": "Custom form block",
+	"example": {},
+	"supports": {
+		"html": false,
+		"color": false,
+		"alignWide": ["none", "wide", "full"]
+	},
+	"attributes": {
+		"postId": {
+			"type": "number",
+			"default": 0
+		},
+		"alignWide": {
+			"type": "string",
+			"default": "none"
+		},
+		"sendFrom": {
+			"type": "string",
+			"default": ""
+		},
+		"sendTo": {
+			"type": "string",
+			"default": ""
+		},
+		"submitButtonAlignment": {
+			"type": "string",
+			"default": "left"
+		},
+		"generatePDF": {
+			"type": "boolean",
+			"default": false
+		},
+		"emailSubject": {
+			"type": "string",
+			"default": ""
+		},
+		"emailTemplate": {
+			"type": "string",
+			"default": ""
+		},
+		"rowGap": {
+			"type": "number",
+			"default": 20
+		},
+		"fieldSpacing": {
+			"type": "number",
+			"default": 20
+		},
+		"conditionalFieldSpacing": {
+			"type": "number",
+			"default": 12
+		},
+		"colorSchema": {
+			"type": "object",
+			"properties": {
+				"inputBackground": {
+					"type": "string",
+					"default": ""
+				},
+				"inputTextColor": {
+					"type": "string",
+					"default": ""
+				},
+				"inputBorderColor": {
+					"type": "string",
+					"default": ""
+				},
+				"inputPlaceholderColor": {
+					"type": "string",
+					"default": ""
+				},
+				"inputBorderColorFocus": {
+					"type": "string",
+					"default": ""
+				},
+				"inputBackgroundFilled": {
+					"type": "string",
+					"default": ""
+				},
+				"inputTextColorFilled": {
+					"type": "string",
+					"default": ""
+				},
+				"color": {
+					"type": "string",
+					"default": ""
+				}
+			},
+			"default": {
+				"inputBackground": "",
+				"inputTextColor": "",
+				"inputBorderColor": "",
+				"inputPlaceholderColor": "",
+				"inputBorderColorFocus": "",
+				"inputBackgroundFilled": "",
+				"inputTextColorFilled": "",
+				"color": ""
+			}
+		},
+		"uiSchema": {
+			"type": "object",
+			"properties": {
+				"inputRadius": {
+					"type": "number",
+					"default": 4
+				}
+			},
+			"default": {
+				"inputRadius": 40
+			}
+		}
+	},
+	"styles": [
+		{
+			"name": "light",
+			"label": "Light"
+		},
+		{
+			"name": "dark",
+			"label": "Dark"
+		}
+	],
+	"textdomain": "mediweb",
+	"editorScript": ["file:./index.js"],
+	"editorStyle": "file:./index.css",
+	"viewStyle": ["react-datepicker", "file:./style-index.css"],
+	"viewScript": "file:./view.js"
+}

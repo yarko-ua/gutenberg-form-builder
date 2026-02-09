@@ -1,0 +1,195 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mediweb/form-field",
+	"version": "0.1.0",
+	"title": "Form field",
+	"parent": ["mediweb/form-row"],
+	"category": "mediweb",
+	"icon": "smiley",
+	"description": "A single form field",
+	"textdomain": "mediweb",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"required": {
+			"type": "boolean",
+			"default": false
+		},
+		"width": {
+			"type": "number",
+			"default": 100
+		},
+		"inline": {
+			"type": "boolean",
+			"default": false
+		},
+		"name": {
+			"type": "string"
+		},
+		"label": {
+			"type": "string",
+			"default": ""
+		},
+		"placeholder": {
+			"type": "string"
+		},
+		"type": {
+			"type": "string",
+			"default": "text"
+		},
+		"dateInput": {
+			"type": "object",
+			"default": {
+				"type": "default",
+				"dateFormat": "dd/mm/yyyy"
+			},
+			"properties": {
+				"type": {
+					"type": "string",
+					"default": "default",
+					"enum": ["default", "datepicker", "mask"]
+				},
+				"dateFormat": {
+					"type": "string",
+					"default": "dd/mm/yyyy",
+					"enum": ["dd/mm/yyyy", "mm/dd/yyyy", "yyyy/mm/dd"]
+				},
+				"mask": {
+					"type": "string",
+					"default": ""
+				}
+			}
+		},
+		"fileInput": {
+			"type": "object",
+			"default": {
+				"maxSize": 20,
+				"allowedTypes": [".jpg", ".png", ".pdf", ".docx"],
+				"isMultiple": false
+			},
+			"properties": {
+				"maxSize": {
+					"type": "number",
+					"default": 20
+				},
+				"allowedTypes": {
+					"type": "array",
+					"default": [".jpg", ".png", ".pdf", ".docx"],
+					"items": {
+						"type": "string"
+					}
+				},
+				"isMultiple": {
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		"options": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object",
+				"properties": {
+					"key": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string",
+						"default": ""
+					},
+					"extraInput": {
+						"type": "object",
+						"default": null,
+						"properties": {
+							"name": {
+								"type": "string",
+								"default": ""
+							},
+							"label": {
+								"type": "string",
+								"default": ""
+							}
+						}
+					},
+					"takeFullWidth": {
+						"type": "boolean",
+						"default": false
+					},
+					"isMarked": {
+						"type": "boolean",
+						"default": false
+					}
+				}
+			}
+		},
+		"textareaInput": {
+			"type": "object",
+			"default": {
+				"rows": 2,
+				"height": ""
+			},
+			"properties": {
+				"rows": {
+					"type": "number",
+					"default": 2
+				},
+				"height": {
+					"type": "number",
+					"default": null
+				}
+			}
+		},
+		"isConditional": {
+			"type": "boolean",
+			"default": false
+		},
+		"conditionField": {
+			"type": "string",
+			"default": ""
+		},
+		"conditionValue": {
+			"type": "string",
+			"default": ""
+		},
+		"context_conditionField": {
+			"type": "string",
+			"default": ""
+		},
+		"context_conditionValue": {
+			"type": "string",
+			"default": ""
+		},
+		"conditionalDisplayType": {
+			"type": "string",
+			"default": "disable",
+			"enum": ["hide", "disable"]
+		},
+		"cols": {
+			"type": "number",
+			"default": 1
+		},
+		"isMultiple": {
+			"type": "boolean",
+			"default": false
+		},
+		"highlighted": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"providesContext": {
+		"mediweb/form/field/isConditional": "isConditional",
+		"mediweb/form/field/conditionField": "conditionField",
+		"mediweb/form/field/conditionValue": "conditionValue"
+	},
+	"usesContext": [
+		"mediweb/form/row/conditionField",
+		"mediweb/form/row/conditionValue"
+	],
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewStyle": "file:./style-index.css"
+}

@@ -1,0 +1,201 @@
+@import "./field/FieldDate/style.scss";
+@import "./field/FieldCheckbox/style.scss";
+@import "./field/FieldRadio/style.scss";
+@import "./field/FieldUpload/style.scss";
+@import "./field/FieldTextarea/style.scss";
+
+.wp-block-mediweb-form-field {
+	margin: 0 !important;
+	flex: 1 1 calc(var(--field-width) - var(--_row-gap));
+	max-width: var(--field-width);
+
+	.field-wrapper {
+		> span {
+			display: block;
+			margin-bottom: 8px;
+
+			&:empty {
+				display: none;
+			}
+		}
+	}
+
+	> label {
+		width: 100%;
+		font-family: "Poppins", sans-serif;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1.5;
+		display: inline-block;
+
+		// span {
+		// 	display: block;
+		// 	margin-bottom: 8px;
+		// }
+	}
+
+	.input-wrapper {
+		width: 100%;
+
+		> * {
+			width: 100%;
+		}
+	}
+
+	&:is(.type-radio, .type-checkbox) {
+		> label {
+			// font-size: 18px;
+			// font-style: normal;
+			// font-weight: 400;
+			// line-height: 1.444;
+			// margin-bottom: 10px;
+		}
+
+		.field-wrapper > span {
+			margin-bottom: 16px;
+		}
+	}
+
+	@include form-field-radio;
+	@include form-field-checkbox;
+
+	// Text input
+	&:not(:is(.type-radio, .type-checkbox)) {
+		.input-wrapper {
+			display: flex;
+			min-height: 50px;
+			align-items: flex-start;
+			// flex-shrink: 0;
+			// align-self: stretch; //bad for align end
+
+			input {
+				padding: 13px 15px;
+				color: var(--_input-color);
+				background: var(--_input-bg, transparent);
+				border: 1px solid var(--_input-border-color, transparent);
+				border-radius: var(--_input-radius, 0px);
+
+				/* Body_14 */
+				font-family: "Poppins", sans-serif;
+				font-size: 1rem;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 1.5;
+
+				&:focus-visible {
+					border-color: var(--_input-border-color-focus, transparent);
+				}
+
+				&::placeholder {
+					color: var(--_placeholder-color, var(--_input-color));
+				}
+
+				&:focus-visible {
+					border-color: var(--_input-border-color-focus, transparent);
+					outline: none;
+				}
+
+				// Has value {
+				&:not([type="date"]):not(:placeholder-shown):not(:focus) {
+					color: var(--_input-color-active);
+					background: var(--_input-bg-active);
+				}
+
+				&:-webkit-autofill,
+				&:-webkit-autofill:focus,
+				&:-webkit-autofill:-internal-autofill-selected,
+				&:-internal-autofill-selected {
+					box-shadow: 0 0 0px 1000px var(--_input-bg, transparent) inset;
+					-webkit-text-fill-color: var(--_input-color);
+				}
+			}
+		}
+	}
+
+	// Dropdown
+	.field-dropdown {
+		padding: 13px 15px;
+		color: var(--_input-color);
+		background: var(--_input-bg, transparent);
+		border: 1px solid var(--_input-border-color, transparent);
+		border-radius: var(--_input-radius, 0px);
+
+		/* Body_14 */
+		font-family: "Poppins", sans-serif;
+		font-size: 1rem;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1.5;
+
+		select {
+			display: none;
+		}
+
+		.select-placeholder {
+		}
+	}
+
+	@include form-field-date;
+	@include form-field-file;
+	@include form-field-textarea;
+
+	&:is(.type-number) {
+		.input-wrapper {
+			width: 90px;
+		}
+	}
+
+	&.inline {
+		display: flex;
+		gap: 30px;
+		align-items: flex-end;
+	}
+
+	&.required {
+		> label:not(:empty) {
+			> span:not(:empty) {
+				&::after {
+					content: " *";
+					color: red;
+					font-weight: 500;
+				}
+			}
+		}
+	}
+
+	.wp-block-mediweb-form-row {
+		margin-top: var(--_conditional-field-spacing);
+	}
+
+	@media (max-width: 767px) {
+		--field-width: 100% !important;
+
+		.checkbox-group {
+			.group-item {
+				flex-basis: 100%;
+			}
+		}
+
+		&.inline {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 16px;
+		}
+	}
+}
+
+@keyframes radioCheckAnimation {
+	0% {
+		scale: 0;
+	}
+	75% {
+		scale: 1.2;
+	}
+	85% {
+		scale: 0.8;
+	}
+	100% {
+		scale: 1;
+	}
+}

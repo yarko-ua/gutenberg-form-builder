@@ -1,0 +1,42 @@
+.media-wrapper {
+	position: relative;
+	width: fit-content;
+	max-width: 100%;
+
+	> img {
+		max-width: 100%;
+	}
+
+	> div {
+		button {
+			background: rgba(201, 201, 201, 0.85);
+			position: absolute !important;
+			top: 0;
+			left: 0;
+			width: 50px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			&.selectBtn {
+				height: auto;
+				z-index: 1;
+			}
+
+			&.removeBtn {
+				left: 50px;
+				background: rgb(255 0 0);
+				z-index: 1;
+			}
+		}
+	}
+
+	.placeholder {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: rgb(231 231 231);
+		width: 255px;
+		aspect-ratio: 1;
+	}
+}

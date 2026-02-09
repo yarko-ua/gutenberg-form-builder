@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mediweb/form-row",
+	"version": "0.1.0",
+	"title": "Form row",
+	"parent": ["mediweb/form"],
+	"category": "mediweb",
+	"icon": "smiley",
+	"description": "A single form row",
+	"textdomain": "mediweb",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"isConditional": {
+			"type": "boolean",
+			"default": false
+		},
+		"conditionField": {
+			"type": "string",
+			"default": ""
+		},
+		"conditionValue": {
+			"type": "string",
+			"default": ""
+		},
+		"conditionalDisplayType": {
+			"type": "string",
+			"default": "disable",
+			"enum": ["hide", "disable"]
+		},
+		"highlighted": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"usesContext": [
+		"mediweb/form/field/isConditional",
+		"mediweb/form/field/conditionField",
+		"mediweb/form/field/conditionValue"
+	],
+	"providesContext": {
+		"mediweb/form/row/isConditional": "isConditional",
+		"mediweb/form/row/conditionField": "conditionField",
+		"mediweb/form/row/conditionValue": "conditionValue"
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewStyle": "file:./style-index.css"
+}

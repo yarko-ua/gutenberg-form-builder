@@ -1,0 +1,122 @@
+@mixin form-field-file {
+	&.type-file {
+		.upload-wrapper {
+			height: 100%;
+			background-color: var(--_input-bg);
+			color: var(--_input-color);
+			border: 2px dashed var(--_input-border-color);
+			border-radius: var(--_input-radius, 0px);
+			padding: 15px;
+			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			box-sizing: border-box;
+
+			input {
+				display: none;
+			}
+
+			// input {
+			// 	font-size: 0 !important;
+			// 	width: 0 !important;
+			// 	padding: 0 !important;
+			// 	scale: 0 !important;
+			// }
+		}
+
+		.upload-placeholder {
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+			margin: 0;
+
+			span {
+				display: inline-flex;
+
+				&:has(svg) {
+					width: 23px;
+					flex-shrink: 0;
+				}
+			}
+
+			svg {
+				color: var(--_input-color);
+			}
+
+			&:hover {
+				background-color: var(--_input-bg-hover);
+				border-color: var(--_input-border-color-focus);
+				color: var(--_input-color-hover);
+			}
+		}
+
+		.file-info {
+			display: none;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+		}
+
+		.remove-file {
+			&::after {
+				content: "";
+				background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI1IDI0IiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNMTguNSA2TDYuNSAxOCIgc3Ryb2tlPSIjMjA2NEQyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNNi41IDZMMTguNSAxOCIgc3Ryb2tlPSIjMjA2NEQyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+");
+				background-size: contain;
+				background-repeat: no-repeat;
+				width: 24px;
+				height: 24px;
+				display: block;
+				background: var(--c-danger, #dc3545);
+				mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI1IDI0IiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNMTguNSA2TDYuNSAxOCIgc3Ryb2tlPSIjMjA2NEQyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNNi41IDZMMTguNSAxOCIgc3Ryb2tlPSIjMjA2NEQyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+");
+				mask-size: contain;
+			}
+		}
+
+		// &::before {
+		// 	content: url("/wp-content/themes/biacnhi/public/images/svg/file-add.svg");
+		// 	width: 24px;
+		// 	height: 24px;
+		// 	display: inline-block;
+		// 	opacity: 0.5;
+		// }
+
+		.error-message {
+			display: none;
+			color: var(--c-danger, #dc3545);
+			position: absolute;
+			bottom: 100%;
+			left: 0;
+		}
+
+		&.uploaded {
+			// border-color: var(--Cobalt-Blue, #2064d2);
+
+			.upload-placeholder {
+				display: none;
+			}
+
+			// &::before {
+			// 	content: url("/wp-content/themes/bianchi/public/images/svg/file-added.svg");
+			// }
+
+			.file-info {
+				display: flex;
+			}
+		}
+
+		&.has-error {
+			.upload-wrapper {
+				border-color: var(--c-danger, #dc3545);
+				margin-top: 16px;
+				position: relative;
+			}
+
+			.error-message {
+				display: block;
+			}
+		}
+	}
+}

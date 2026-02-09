@@ -1,0 +1,14 @@
+@mixin form-field-date {
+	&.type-date {
+		input {
+			&:not(.has-value) {
+				color: var(--_placeholder-color);
+			}
+
+			&:focus,
+			&:open {
+				border-color: var(--_input-border-color-focus);
+			}
+		}
+	}
+}

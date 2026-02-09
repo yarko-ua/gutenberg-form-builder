@@ -1,0 +1,47 @@
+@mixin form-field-textarea {
+	&.type-textarea {
+		textarea {
+			padding: 13px 15px;
+			color: var(--_input-color);
+			background: var(--_input-bg, transparent);
+			border: 1px solid var(--_input-border-color, transparent);
+			border-radius: var(--_input-radius-2, 0px);
+
+			/* Body_14 */
+			// font-family: "Poppins", sans-serif;
+			font-family: inherit;
+			font-size: 1rem;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 1.5;
+			height: var(--textareaHeight, auto);
+
+			&:focus-visible {
+				border-color: var(--_input-border-color-focus, transparent);
+			}
+
+			&::placeholder {
+				color: var(--_placeholder-color, var(--_input-color));
+			}
+
+			&:focus-visible {
+				border-color: var(--_input-border-color-focus, transparent);
+				outline: none;
+			}
+
+			// Has value {
+			&:not([type="date"]):not(:placeholder-shown):not(:focus) {
+				color: var(--_input-color-active);
+				background: var(--_input-bg-active);
+			}
+
+			&:-webkit-autofill,
+			&:-webkit-autofill:focus,
+			&:-webkit-autofill:-internal-autofill-selected,
+			&:-internal-autofill-selected {
+				box-shadow: 0 0 0px 1000px var(--_input-bg, transparent) inset;
+				-webkit-text-fill-color: var(--_input-color);
+			}
+		}
+	}
+}

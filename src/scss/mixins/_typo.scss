@@ -1,0 +1,71 @@
+@import "./viewport";
+
+$fontMain: sans-serif;
+
+@mixin hStyles($hgroup, $size: null) {
+	@if ($hgroup == "h1") {
+		font: 400 4rem / 1.125 $fontMain;
+		letter-spacing: 0.16em;
+
+		@include mobile {
+			font-size: 2.875rem;
+			line-height: 1.17;
+		}
+	} @else if ($hgroup == "h2") {
+		@if ($size == "small") {
+			font-size: 1.5rem;
+			line-height: 1.333;
+			text-transform: uppercase;
+			letter-spacing: 0.16em;
+
+			@include mobile {
+				// font-size: 1.5rem;
+				// line-height: 1.4166;
+			}
+		} @else {
+			font: 400 2.5rem / 1.2 $fontMain;
+			letter-spacing: 0.12em;
+
+			@include mobile {
+				font-size: 2.125rem;
+				line-height: 1.235;
+			}
+		}
+	} @else if ($hgroup == "h3") {
+		@if ($size == "big") {
+			font-size: 3.375rem;
+			line-height: 1.18;
+			letter-spacing: -0.04em;
+
+			@include mobile {
+				font-size: 2rem;
+				line-height: 1.3125;
+			}
+		} @else {
+			font: 400 1.625rem / 1.3 $fontMain;
+			letter-spacing: 0.04em;
+
+			@include mobile {
+				font-size: 1.5rem;
+				line-height: 1.333;
+			}
+		}
+	} @else if ($hgroup == "h4") {
+		font: 400 1.375rem / 1.45 $fontMain;
+
+		@include mobile {
+			font-size: 1.25rem;
+			line-height: 1.5;
+		}
+	} @else if ($hgroup == "h5") {
+		font: 400 1.25rem / 1.33 $fontMain;
+	} @else if ($hgroup == "h6") {
+		font: 400 1.125rem / 1.5 $fontMain;
+	}
+}
+
+@mixin text-20 {
+	font-size: 1.25rem;
+	line-height: 1.4;
+	letter-spacing: 0.02em;
+}
